@@ -1055,9 +1055,9 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Services Section
+# Blogs Section
 --------------------------------------------------------------*/
-.services .service-item {
+.Blogs .Blog-item {
   background-color: var(--surface-color);
   text-align: center;
   padding: 80px 20px;
@@ -1065,7 +1065,7 @@ section,
   height: 100%;
 }
 
-.services .service-item .icon {
+.Blogs .Blog-item .icon {
   margin: 0 auto;
   width: 64px;
   height: 64px;
@@ -1079,13 +1079,13 @@ section,
   transform-style: preserve-3d;
 }
 
-.services .service-item .icon i {
+.Blogs .Blog-item .icon i {
   color: var(--contrast-color);
   font-size: 28px;
   transition: ease-in-out 0.3s;
 }
 
-.services .service-item .icon::before {
+.Blogs .Blog-item .icon::before {
   position: absolute;
   content: "";
   left: -8px;
@@ -1098,51 +1098,51 @@ section,
   transform: translateZ(-1px);
 }
 
-.services .service-item h3 {
+.Blogs .Blog-item h3 {
   font-weight: 700;
   margin: 10px 0 15px 0;
   font-size: 22px;
 }
 
-.services .service-item p {
+.Blogs .Blog-item p {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
 }
 
-.services .service-item:hover {
+.Blogs .Blog-item:hover {
   background: var(--accent-color);
   border-color: var(--accent-color);
 }
 
-.services .service-item:hover .icon {
+.Blogs .Blog-item:hover .icon {
   background: var(--surface-color);
 }
 
-.services .service-item:hover .icon i {
+.Blogs .Blog-item:hover .icon i {
   color: var(--accent-color);
 }
 
-.services .service-item:hover .icon::before {
+.Blogs .Blog-item:hover .icon::before {
   background: color-mix(in srgb, var(--background-color), transparent 70%);
 }
 
-.services .service-item:hover h3,
-.services .service-item:hover p {
+.Blogs .Blog-item:hover h3,
+.Blogs .Blog-item:hover p {
   color: var(--contrast-color);
 }
 
 /*--------------------------------------------------------------
-# Service Details Section
+# Blog Details Section
 --------------------------------------------------------------*/
-.service-details .services-list {
+.Blog-details .Blogs-list {
   background-color: var(--surface-color);
   padding: 10px 30px;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   margin-bottom: 20px;
 }
 
-.service-details .services-list a {
+.Blog-details .Blogs-list a {
   display: block;
   line-height: 1;
   padding: 8px 0 8px 15px;
@@ -1152,63 +1152,63 @@ section,
   transition: 0.3s;
 }
 
-.service-details .services-list a.active {
+.Blog-details .Blogs-list a.active {
   color: var(--heading-color);
   font-weight: 700;
   border-color: var(--accent-color);
 }
 
-.service-details .services-list a:hover {
+.Blog-details .Blogs-list a:hover {
   border-color: var(--accent-color);
 }
 
-.service-details .services-img {
+.Blog-details .Blogs-img {
   margin-bottom: 20px;
 }
 
-.service-details h3 {
+.Blog-details h3 {
   font-size: 26px;
   font-weight: 700;
 }
 
-.service-details h4 {
+.Blog-details h4 {
   font-size: 20px;
   font-weight: 700;
 }
 
-.service-details p {
+.Blog-details p {
   font-size: 15px;
 }
 
-.service-details ul {
+.Blog-details ul {
   list-style: none;
   padding: 0;
   font-size: 15px;
 }
 
-.service-details ul li {
+.Blog-details ul li {
   padding: 5px 0;
   display: flex;
   align-items: center;
 }
 
-.service-details ul i {
+.Blog-details ul i {
   font-size: 20px;
   margin-right: 8px;
   color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
-# Portfolio Section
+# Research Section
 --------------------------------------------------------------*/
-.portfolio .portfolio-filters {
+.Research .Research-filters {
   padding: 0;
   margin: 0 auto 20px auto;
   list-style: none;
   text-align: center;
 }
 
-.portfolio .portfolio-filters li {
+.Research .Research-filters li {
   cursor: pointer;
   display: inline-block;
   padding: 0;
@@ -1220,36 +1220,36 @@ section,
   transition: all 0.3s ease-in-out;
 }
 
-.portfolio .portfolio-filters li:hover,
-.portfolio .portfolio-filters li.filter-active {
+.Research .Research-filters li:hover,
+.Research .Research-filters li.filter-active {
   color: var(--accent-color);
 }
 
-.portfolio .portfolio-filters li:first-child {
+.Research .Research-filters li:first-child {
   margin-left: 0;
 }
 
-.portfolio .portfolio-filters li:last-child {
+.Research .Research-filters li:last-child {
   margin-right: 0;
 }
 
 @media (max-width: 575px) {
-  .portfolio .portfolio-filters li {
+  .Research .Research-filters li {
     font-size: 14px;
     margin: 0 5px;
   }
 }
 
-.portfolio .portfolio-content {
+.Research .Research-content {
   position: relative;
   overflow: hidden;
 }
 
-.portfolio .portfolio-content img {
+.Research .Research-content img {
   transition: 0.3s;
 }
 
-.portfolio .portfolio-content .portfolio-info {
+.Research .Research-content .Research-info {
   opacity: 0;
   position: absolute;
   inset: 0;
@@ -1259,7 +1259,7 @@ section,
   padding: 15px;
 }
 
-.portfolio .portfolio-content .portfolio-info h4 {
+.Research .Research-content .Research-info h4 {
   font-size: 14px;
   padding: 5px 10px;
   font-weight: 400;
@@ -1268,7 +1268,7 @@ section,
   background-color: var(--accent-color);
 }
 
-.portfolio .portfolio-content .portfolio-info p {
+.Research .Research-content .Research-info p {
   position: absolute;
   bottom: 10px;
   text-align: center;
@@ -1280,8 +1280,8 @@ section,
   color: rgba(255, 255, 255, 0.8);
 }
 
-.portfolio .portfolio-content .portfolio-info .preview-link,
-.portfolio .portfolio-content .portfolio-info .details-link {
+.Research .Research-content .Research-info .preview-link,
+.Research .Research-content .Research-info .details-link {
   position: absolute;
   left: calc(50% - 40px);
   font-size: 26px;
@@ -1291,55 +1291,55 @@ section,
   line-height: 1.2;
 }
 
-.portfolio .portfolio-content .portfolio-info .preview-link:hover,
-.portfolio .portfolio-content .portfolio-info .details-link:hover {
+.Research .Research-content .Research-info .preview-link:hover,
+.Research .Research-content .Research-info .details-link:hover {
   color: var(--accent-color);
 }
 
-.portfolio .portfolio-content .portfolio-info .details-link {
+.Research .Research-content .Research-info .details-link {
   left: 50%;
   font-size: 34px;
   line-height: 0;
 }
 
-.portfolio .portfolio-content:hover .portfolio-info {
+.Research .Research-content:hover .Research-info {
   opacity: 1;
 }
 
-.portfolio .portfolio-content:hover img {
+.Research .Research-content:hover img {
   transform: scale(1.1);
 }
 
 /*--------------------------------------------------------------
-# Portfolio Details Section
+# Research Details Section
 --------------------------------------------------------------*/
-.portfolio-details .portfolio-details-slider img {
+.Research-details .Research-details-slider img {
   width: 100%;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination {
+.Research-details .Research-details-slider .swiper-pagination {
   margin-top: 20px;
   position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.Research-details .Research-details-slider .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: color-mix(in srgb, var(--default-color), transparent 85%);
   opacity: 1;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.Research-details .Research-details-slider .swiper-pagination .swiper-pagination-bullet-active {
   background-color: var(--accent-color);
 }
 
-.portfolio-details .portfolio-info {
+.Research-details .Research-info {
   background-color: var(--surface-color);
   padding: 30px;
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio-details .portfolio-info h3 {
+.Research-details .Research-info h3 {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -1347,27 +1347,27 @@ section,
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
-.portfolio-details .portfolio-info ul {
+.Research-details .Research-info ul {
   list-style: none;
   padding: 0;
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.Research-details .Research-info ul li+li {
   margin-top: 10px;
 }
 
-.portfolio-details .portfolio-description {
+.Research-details .Research-description {
   padding-top: 30px;
 }
 
-.portfolio-details .portfolio-description h2 {
+.Research-details .Research-description h2 {
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.portfolio-details .portfolio-description p {
+.Research-details .Research-description p {
   padding: 0;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
