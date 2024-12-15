@@ -4,59 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merlin C2 Setup Guide</title>
+    <p>This guide provides a step-by-step methodology for downloading, installing, configuring, and using the Merlin C2 framework. By following this documentation, you will be able to set up and run the Merlin Server, configure listeners, deploy agents, and interact with them effectively.</p>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e1e1e; /* Dark background */
+            color: #e0e0e0; /* Light grey text */
             margin: 0;
             padding: 0;
-            color: #333;
         }
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            background-color: white;
+            background-color: #2d2d2d; /* Slightly lighter background */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); /* Glowing cyber effect */
         }
         h1 {
             text-align: center;
-            color: #2c3e50;
+            color: #00ff99; /* Neon green for title */
+            text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
         }
-        h2 {
-            color: #34495e;
+        h2, h3 {
+            color: #ff66cc; /* Neon pink for subheadings */
             margin-top: 20px;
-        }
-        pre {
-            background-color: #eaeaea;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc;
         }
         p {
             margin-bottom: 15px;
         }
+        pre {
+            background-color: #333;
+            color: #00b3b3; /* Neon blue text */
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #00b3b3; /* Border with neon blue */
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
         ul {
             margin: 10px 0;
             padding-left: 20px;
+            color: #e0e0e0;
         }
         .command {
-            color: #2980b9;
+            color: #00b3b3; /* Neon blue commands */
             font-weight: bold;
         }
         .note {
-            background-color: #f9e7e7;
+            background-color: #333;
             padding: 10px;
-            border-left: 5px solid #e74c3c;
+            border-left: 5px solid #ff66cc; /* Neon pink left border */
             margin: 20px 0;
+            color: #e0e0e0;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: #00ff99;
+            text-decoration: none;
+        }
+        /* Glowing text effect */
+        .glow {
+            color: #ff66cc;
+            text-shadow: 0 0 5px #ff66cc, 0 0 10px #ff66cc, 0 0 20px #ff66cc;
+        }
+        .background-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Subtle cyber grid */
+            opacity: 0.1;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
+    <div class="background-grid"></div>
     <div class="container">
-        <h1>Merlin C2 Framework Setup Guide</h1>
+        <h1 class="glow">Merlin C2 Framework Setup Guide</h1>
 
         <h2>Step 1: Running the CLI</h2>
         <p>With the CLI running, initiate the listeners using the command:</p>
@@ -107,7 +141,11 @@
             <p><strong>Note:</strong> This guide provides a clear and structured approach for anyone to follow and set up the Merlin C2 framework. Ensure that you follow each step carefully and verify your setup at each stage to avoid any issues.</p>
         </div>
 
-        <p>Feel free to add screenshots at the specified locations (e.g., "screenshot 1", "screenshot 2", etc.) to provide visual aid for users.</p>
+        <!-- <p>Feel free to add screenshots at the specified locations (e.g., "screenshot 1", "screenshot 2", etc.) to provide visual aid for users.</p> -->
+    </div>
+
+    <div class="footer">
+        <p>Documentation created by Khan Shehnaz</a></p>
     </div>
 </body>
 </html>
