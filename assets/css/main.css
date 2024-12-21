@@ -1474,3 +1474,24 @@ section,
 .contact .php-email-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
+
+
+/* Add this to your existing CSS file */
+
+@keyframes gradientAnimation {
+  0% {
+    background: linear-gradient(45deg, #1e3c72, #2a5298);
+  }
+  50% {
+    background: linear-gradient(45deg, #f12711, #f5af19);
+  }
+  100% {
+    background: linear-gradient(45deg, #1e3c72, #2a5298);
+  }
+}
+
+.header {
+  background: linear-gradient(45deg, #1e3c72, #2a5298);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
